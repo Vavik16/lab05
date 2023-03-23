@@ -39,8 +39,8 @@ jobs:
       run: |
         cd ${{github.workspace}}/build
         lcov --base-directory . --directory . --zerocounters -q
-        lcov --base-directory . --directory . -c -o libbash_test.info
-        lcov --remove libbash_test.info "/usr*" -o libbash_test.info # remove output for external libraries
+        lcov --base-directory . --directory . -c -o report.info
+        lcov --remove report.info "/usr*" -o report.info
 
     - name: Publish to coveralls.io
       uses: coverallsapp/github-action@master
