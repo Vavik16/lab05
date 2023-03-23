@@ -35,5 +35,5 @@ ASSERT_EQ(transaction.Make(accA, accB, 200000), false);
 
 ASSERT_EQ(transaction.Make(accA, accB, 1200), true); 
 ASSERT_EQ(accB.GetBalance(), 2700);
-ASSERT_EQ(accA.GetBalance(), 300); 
+ASSERT_EQ(accA.GetBalance(), 200); 
 }
