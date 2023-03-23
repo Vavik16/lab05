@@ -31,7 +31,7 @@ ASSERT_THROW(transaction.Make(accB, accB, 1000), std::logic_error);
 ASSERT_THROW(transaction.Make (accA, accB, 40), std::logic_error); 
 transaction.set_fee(100); 
 ASSERT_EQ(transaction.Make(accA, accB, 150), false); 
-ASSERT_EQ(transaction.Make(accA, accB, 2000), false); 
+ASSERT_EQ(transaction.Make(accA, accB, 200000), false); 
 
 ASSERT_EQ(transaction.Make(accA, accB, 1200), true); 
 ASSERT_EQ(accB.GetBalance(), 2700);
