@@ -26,7 +26,7 @@ jobs:
     - name: Install lcov
       run: sudo apt-get install -y lcov
 
-    - name: CMake banking and tests
+    - name: CMake check of banking and tests
       run: cmake ${{github.workspace}} -B ${{github.workspace}}/build
 
     - name: Build modules
@@ -38,14 +38,14 @@ jobs:
     - name: Make Coverage Process
       run: |
         cd ${{github.workspace}}/build
-        lcov -t "Testfile Coverage" -o Testfile.info -c -d .  
+        lcov  --directory banking gtest -c -o report.info --no-external  
 
     - name: Publish to coveralls.io
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         parallel: true
-        path-to-lcov: ${{github.workspace}}/build/Testfile.info
+        path-to-lcov: ${{github.workspace}}/build/report.info
         coveralls-endpoint: https://coveralls.io
 
     - name: End coveralls
