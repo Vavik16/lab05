@@ -12,7 +12,7 @@ ASSERT_NO_THROW(acc.ChangeBalance(120));
 ASSERT_THROW(acc.Lock(), std::runtime_error);
 ASSERT_EQ(acc.GetBalance(), 120);
 acc.ChangeBalance(-124); 
-ASSERT_EQ(acc.GetBalance(), -3);
+ASSERT_EQ(acc.GetBalance(), -4);
 acc.Unlock(); 
 ASSERT_THROW(acc.ChangeBalance(120), std::runtime_error);
 }
@@ -24,7 +24,7 @@ Transaction transaction;
 
 ASSERT_EQ(transaction.fee(), 1);
 transaction.set_fee(20); 
-ASSERT_EQ(transaction.fee(), 10);
+ASSERT_EQ(transaction.fee(), 20);
 
 ASSERT_THROW(transaction.Make(accA, accB, -345), std::invalid_argument); 
 ASSERT_THROW(transaction.Make(accB, accB, 1000), std::logic_error); 
