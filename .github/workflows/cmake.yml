@@ -38,7 +38,9 @@ jobs:
     - name: Make Coverage Process
       run: |
         cd ${{github.workspace}}/build
-        lcov  --directory banking --directory gtest -c -o report.info --no-external  
+        lcov --base-directory . --directory . --zerocounters -q
+        lcov --base-directory . --directory . -c -o libbash_test.info
+        lcov --remove libbash_test.info "/usr*" -o libbash_test.info # remove output for external libraries
 
     - name: Publish to coveralls.io
       uses: coverallsapp/github-action@master
