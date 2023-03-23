@@ -1,8 +1,9 @@
 cmake_minimum_required(VERSION 3.22.1 FATAL_ERROR)
-add_compile_options(--coverage)
 project(banking)
-add_library(banking_lib STATIC  ${CMAKE_CURRENT_SOURCE_DIR}/banking/Transaction.cpp  ${CMAKE_CURRENT_SOURCE_DIR}/banking/Account.cpp) 
-target_link_libraries(banking_lib gcover)
+add_compile_options(--coverage)
+add_library(banking_lib STATIC  ${CMAKE_CURRENT_SOURCE_DIR}/banking/Transaction.cpp 
+                                ${CMAKE_CURRENT_SOURCE_DIR}/banking/Account.cpp)
+target_link_libraries(banking_lib gcov)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/third-party/gtest gtest)
 add_executable(run_test ${CMAKE_CURRENT_SOURCE_DIR}/gtest/tests.cpp)
 target_include_directories(run_test PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/banking)
