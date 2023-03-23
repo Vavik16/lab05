@@ -38,7 +38,7 @@ jobs:
     - name: Make Coverage Process
       run: |
         cd ${{github.workspace}}/build
-        lcov  --directory banking gtest -c -o report.info --no-external  
+        lcov  --directory banking --directory gtest -c -o report.info --no-external  
 
     - name: Publish to coveralls.io
       uses: coverallsapp/github-action@master
