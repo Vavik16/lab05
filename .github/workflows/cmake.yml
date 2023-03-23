@@ -29,7 +29,7 @@ jobs:
     - name: CMake banking and tests
       run: cmake ${{github.workspace}} -B ${{github.workspace}}/build
 
-    - name: Build B&T
+    - name: Build modules
       run: cmake --build ${{github.workspace}}/build
 
     - name: Run test
