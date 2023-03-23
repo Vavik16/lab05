@@ -38,9 +38,7 @@ jobs:
     - name: Make Coverage Process
       run: |
         cd ${{github.workspace}}/build
-        lcov --base-directory . --directory . --zerocounters -q
-        lcov --base-directory . --directory . -c -o report.info
-        lcov --remove report.info "/usr*" -o report.info
+        lcov -o report.info -c -d . 
 
     - name: Publish to coveralls.io
       uses: coverallsapp/github-action@master
